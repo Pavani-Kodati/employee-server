@@ -3,6 +3,7 @@ package com.pavani.employeeservice.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "departments")
@@ -19,7 +20,8 @@ public class Department {
     private String location;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Employee> employees;
+@JsonIgnoreProperties("department")
+private List<Employee> employees;
 
     public Department() {}
 

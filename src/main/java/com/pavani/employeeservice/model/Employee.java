@@ -31,10 +31,10 @@ public class Employee {
     @Column(precision = 10, scale = 2)
     private BigDecimal salary;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "department_id")
-    private Department department;
-
+   @ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "department_id")
+@JsonIgnoreProperties("employees")
+private Department department;
     public Employee() {}
 
     public Employee(String firstName, String lastName, String email,
